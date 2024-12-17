@@ -1,0 +1,31 @@
+/* custom-swal.css */
+.custom-swal-popup {
+  width: 250px !important;
+  height: auto !important;
+}
+
+@media (min-width: 768px) {
+  .custom-swal-popup {
+    width: 400px !important;
+    padding: 1rem !important;
+  }
+  .custom-swal-title {
+    font-size: 1.5rem !important;
+  }
+  .custom-swal-text {
+    font-size: 1rem !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .custom-swal-popup {
+    width: 500px !important;
+    padding: 1.5rem !important;
+  }
+  .custom-swal-title {
+    font-size: 2rem !important;
+  }
+  .custom-swal-text {
+    font-size: 1.25rem !important;
+  }
+}

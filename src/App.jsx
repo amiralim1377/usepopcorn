@@ -3,24 +3,18 @@ import AppLayout from "./Components/AppLayout/AppLayout";
 import HomePage from "./Pages/HomePage/HomePage";
 import { Provider } from "react-redux";
 import store from "../store";
+import Search from "./Pages/Search/Search";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/app",
     element: <AppLayout />,
     children: [
       {
-        path: "homepage",
-        element: <HomePage />,
+        path: "search/:film",
+        element: <Search />,
       },
-      {
-        path: "/",
-        element: <HomePage />,
-      },
-      // {
-      //   path: "search/:film",
-      //   element: <Search />,
-      // },
+
       // {
       //   path: "details",
       //   element: <DetailsMovie />,
@@ -30,6 +24,10 @@ const router = createBrowserRouter([
       //   element: <WatchList />,
       // },
     ],
+  },
+  {
+    path: "/",
+    element: <HomePage />,
   },
 ]);
 

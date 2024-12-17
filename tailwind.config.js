@@ -8,6 +8,7 @@ export default {
       },
       colors: {
         yellow: ["#E2B616"],
+        dark: ["#121212"],
       },
     },
   },
