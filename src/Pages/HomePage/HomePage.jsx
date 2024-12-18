@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import Swal from "sweetalert2";
 import { userSearch } from "../../Slice/searchSlice";
@@ -32,30 +32,30 @@ function HomePage() {
   };
 
   return (
-    <div className="relative flex items-start justify-center  min-h-screen">
-      <div className="bg-HomePage absolute min-h-screen w-full -z-10 "></div>
-      <div className="max-w-3xl flex flex-col items-center justify-between   space-y-36 w-full m-3 p-4 ">
-        <div className="flex items-center justify-center   p-2">
+    <div className="relative flex min-h-screen items-start justify-center">
+      <div className="bg-HomePage absolute -z-10 min-h-screen w-full"></div>
+      <div className="m-3 flex w-full max-w-3xl flex-col items-center justify-between space-y-36 p-4">
+        <div className="flex items-center justify-center p-2">
           <img
             src="../../../public/images/popcorn-svgrepo-com (1).svg"
-            className="w-10 h-10"
+            className="h-10 w-10"
             alt=""
           />
-          <div className="font-Roboto  text-yellow-0 font-bold text-xl md:text-2xl md:tracking-widest  text-center">
+          <div className="text-center font-Roboto text-xl font-bold text-yellow-0 md:text-2xl md:tracking-widest">
             USEPOPCORN
           </div>
         </div>
-        <h1 className="font-Roboto text-yellow-0 font-bold text-2xl md:text-6xl md:tracking-widest italic text-center">
+        <h1 className="text-center font-Roboto text-2xl font-bold italic text-yellow-0 md:text-6xl md:tracking-widest">
           SEARCH, FIND, ENJOY
         </h1>
         <form
-          className="relative flex flex-col items-center justify-center w-full"
+          className="relative flex w-full flex-col items-center justify-center"
           onSubmit={handleFormSubmit}
         >
-          <div className="relative w-full flex items-center">
+          <div className="relative flex w-full items-center">
             <input
               type="text"
-              className="w-full p-3 md:px-9 md:py-4 rounded-2xl text-left"
+              className="w-full rounded-2xl p-3 text-left md:px-9 md:py-4"
               placeholder="search your favorite movie..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}

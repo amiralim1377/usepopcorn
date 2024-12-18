@@ -4,6 +4,9 @@ import HomePage from "./Pages/HomePage/HomePage";
 import { Provider } from "react-redux";
 import store from "../store";
 import Search from "./Pages/Search/Search";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import DetailsMovie from "./Pages/DetailsMovie/DetailsMovie";
 
 const router = createBrowserRouter([
   {
@@ -14,15 +17,10 @@ const router = createBrowserRouter([
         path: "search/:film",
         element: <Search />,
       },
-
-      // {
-      //   path: "details",
-      //   element: <DetailsMovie />,
-      // },
-      // {
-      //   path: "watchlist",
-      //   element: <WatchList />,
-      // },
+      {
+        path: "detailsmovie",
+        element: <DetailsMovie />,
+      },
     ],
   },
   {
@@ -32,11 +30,16 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+  // Create a client
+  const queryClient = new QueryClient();
   return (
     <>
-      <Provider store={store}>
-        <RouterProvider router={router} />
-      </Provider>
+      <QueryClientProvider client={queryClient}>
+        <Provider store={store}>
+          <RouterProvider router={router} />
+        </Provider>
+        <ReactQueryDevtools initialIsOpen={false} />
+      </QueryClientProvider>
     </>
   );
 }
