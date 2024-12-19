@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 
 function AppLayout() {
   return (
@@ -8,9 +9,7 @@ function AppLayout() {
       <main className="container mx-auto mt-12 flex max-w-7xl flex-grow bg-yellow-0">
         <Outlet />
       </main>
-      <footer className="bg-gray-800 py-4 text-center text-white">
-        &copy; 2023 USEPOPCORN. All rights reserved.
-      </footer>
+      <Footer />
     </div>
   );
 }

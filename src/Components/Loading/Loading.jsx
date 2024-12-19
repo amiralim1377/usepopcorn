@@ -2,7 +2,7 @@ function Loading() {
   return (
     <div
       role="status"
-      className="flex min-h-screen items-center justify-center"
+      className="flex min-h-screen w-full items-center justify-center"
     >
       <svg
         aria-hidden="true"

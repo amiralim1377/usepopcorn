@@ -7,6 +7,7 @@ import Search from "./Pages/Search/Search";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import DetailsMovie from "./Pages/DetailsMovie/DetailsMovie";
+import Watchlist from "./Pages/Watchlist/Watchlist";
 
 const router = createBrowserRouter([
   {
@@ -18,8 +19,12 @@ const router = createBrowserRouter([
         element: <Search />,
       },
       {
-        path: "detailsmovie",
+        path: "detailsmovie/:imdbID",
         element: <DetailsMovie />,
+      },
+      {
+        path: "watchlist",
+        element: <Watchlist />,
       },
     ],
   },

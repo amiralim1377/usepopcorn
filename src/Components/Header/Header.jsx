@@ -38,7 +38,7 @@ function Header() {
   };
 
   return (
-    <header className="fixed left-0 right-0 top-0">
+    <header className="fixed left-0 right-0 top-0 z-50">
       <div className="z-10 flex h-14 items-center justify-between bg-black px-2 shadow-md">
         <Link to="/">
           <div className="flex items-center justify-between">
@@ -83,18 +83,18 @@ function Header() {
               alt="Search Icon"
             />
           </div>
-          <div>
+          <div onClick={() => navigate(-1)}>
             <img
               src="../../../public/images/undo_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
               alt="Undo Icon"
-              className="md:h-10 md:w-10"
+              className="cursor-pointer md:h-10 md:w-10"
             />
           </div>
-          <div>
+          <div onClick={() => navigate("watchlist")}>
             <img
               src="../../../public/images/list_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
-              alt="Menu Icon"
-              className="md:h-10 md:w-10"
+              alt="watchlist Icon"
+              className="cursor-pointer md:h-10 md:w-10"
             />
           </div>
         </div>

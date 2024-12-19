@@ -19,8 +19,6 @@ function Search() {
     queryFn: () => getfilms(searchUser),
   });
 
-  console.log(error || filmsdata);
-
   if (isLoading) return <Loading />;
 
   if (error || filmsdata.Response === "False") {
