@@ -12,7 +12,6 @@ import {
   removeFromWatchList,
 } from "../../Slice/watchlistSlice";
 
-// سبک‌های مودال را می‌توانید مطابق نیاز خود سفارشی کنید
 const customStyles = {
   content: {
     top: "50%",

@@ -1,8 +1,7 @@
-import { useState } from "react";
 import { removeFromWatchList } from "../../Slice/watchlistSlice";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-
+// eslint-disable-next-line
 function GridView({ list }) {
   // eslint-disable-next-line
 
@@ -23,7 +22,7 @@ function GridView({ list }) {
   }
 
   return (
-    <li className="relative mx-2 flex cursor-pointer flex-col items-center justify-center rounded-2xl bg-itemdark-0 shadow-2xl hover:bg-itemdarker-0 hover:shadow-none md:mx-0">
+    <li className="relative mx-2 flex flex-col items-center justify-center rounded-2xl bg-itemdark-0 shadow-2xl hover:bg-itemdarker-0 hover:shadow-none md:mx-0">
       {isAdded && (
         <img
           src="../../../public/images/bookmark_check_24dp_E2B616_FILL1_wght400_GRAD0_opsz24.svg"
@@ -34,7 +33,7 @@ function GridView({ list }) {
       <img
         src={Poster}
         alt={Title}
-        className="z-0 h-48 w-full rounded-md rounded-t-2xl"
+        className="z-0 h-56 w-full rounded-md rounded-t-2xl"
       />
 
       <div>

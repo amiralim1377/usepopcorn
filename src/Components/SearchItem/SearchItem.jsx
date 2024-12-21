@@ -1,9 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useNavigation } from "react-router-dom";
 import Rating from "react-rating-stars-component";
 import Swal from "sweetalert2";
 import { useState } from "react";
 import Modal from "react-modal";
+import { getfilmsbyid } from "../../services/getfilmsbyid";
 import {
   addToWatchList,
   removeFromWatchList,
@@ -21,12 +22,14 @@ const customStyles = {
   overlay: { backgroundColor: "rgba(0, 0, 0, 0.8)" },
 };
 
-// eslint-disable-next-line
 function SearchItem({ films }) {
   // eslint-disable-next-line
   const { Poster, Title, Year, imdbID } = films;
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === "submitting";
+  console.log(isSubmitting);
 
   const watchlist = useSelector((state) => state.watchlist.watchlist);
   const isAdded = watchlist.some((film) => film.imdbID === imdbID);
@@ -34,8 +37,25 @@ function SearchItem({ films }) {
   const [rating, setRating] = useState(0);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  function handleGoToDetailsMovie() {
-    navigate(`/app/detailsmovie/${imdbID}`);
+  async function handleSubmitRating() {
+    try {
+      const filmDetails = await getfilmsbyid(imdbID);
+
+      dispatch(addToWatchList({ ...filmDetails, rating }));
+      setModalIsOpen(false);
+      Swal.fire({
+        icon: "success",
+        title: "Added!",
+        text: `You rated ${Title} with a score of ${rating}`,
+      });
+    } catch (error) {
+      console.error("Error fetching film details:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Failed to add film to watchlist. Please try again.",
+      });
+    }
   }
 
   function handleAddToWatchList() {
@@ -44,16 +64,6 @@ function SearchItem({ films }) {
 
   function handleRemoveFromWatchList() {
     dispatch(removeFromWatchList(imdbID));
-  }
-
-  function handleSubmitRating() {
-    dispatch(addToWatchList({ ...films, rating }));
-    setModalIsOpen(false);
-    Swal.fire({
-      icon: "success",
-      title: "Added!",
-      text: `You rated ${Title} with a score of ${rating}`,
-    });
   }
 
   return (
@@ -82,7 +92,7 @@ function SearchItem({ films }) {
           </div>
           <div className="flex flex-col items-center justify-center space-y-2">
             <button
-              onClick={handleGoToDetailsMovie}
+              onClick={() => navigate(`/app/detailsmovie/${imdbID}`)}
               className="w-full rounded-md bg-[#2c2c2c] px-8 py-3 text-xs text-[#5799ef] hover:opacity-90 md:text-base"
             >
               More Details
@@ -119,16 +129,18 @@ function SearchItem({ films }) {
           activeColor="#ffd700"
           onChange={(newRating) => setRating(newRating)}
         />
-        <div className="flex flex-row space-x-2">
+        <div className="flex flex-row items-center justify-center space-x-2">
           <button
             onClick={handleSubmitRating}
             className="mt-4 rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
+            disabled={isSubmitting}
           >
             Submit
           </button>
           <button
             onClick={() => setModalIsOpen(false)}
             className="mt-4 rounded-md bg-red-500 px-4 py-2 text-white hover:bg-red-600"
+            disabled={isSubmitting}
           >
             Cancel
           </button>
