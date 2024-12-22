@@ -9,7 +9,7 @@ const watchlistSlice = createSlice({
   initialState,
   reducers: {
     addToWatchList(state, action) {
-      state.watchlist.push(action.payload);
+      state.watchlist?.push(action.payload);
     },
     removeFromWatchList(state, action) {
       state.watchlist = state.watchlist.filter(
