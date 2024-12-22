@@ -1,7 +1,3 @@
-const fs = require('fs');
-
-const readmeContent = `
-
 # Project Use Popcorn
 
 **Brief Description**:
@@ -38,8 +34,6 @@ The following technologies and libraries have been used in the development of Us
 ### SweetAlert2
 
 - **Version**: 11.15.2
-
-### UUID
 
 ## Development Tools
 
@@ -83,4 +77,4 @@ With these technologies, Use Popcorn is equipped with a robust, maintainable, an
 
 ---
 
-Feel free to customize it further based on your specific needs. If you have any more details or specific sections you'd like to include
+Feel free to customize it further based on your specific needs. If you have any more details or specific sections you'd like to include, let me know and I'll be happy to adjust it for you! 😊

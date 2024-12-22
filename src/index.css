@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 .bg-HomePage {
-  background-image: url("https://i.postimg.cc/BnSrtHXb/s.jpg");
+  background-image: url("https://raw.githubusercontent.com/amiralim1377/usepopcorn/refs/heads/main/public/images/background.jpg");
   object-fit: cover;
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
