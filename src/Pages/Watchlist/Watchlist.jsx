@@ -7,7 +7,7 @@ import Zerowatchlist from "../../Components/Zerowatchlist/Zerowatchlist";
 import { deleteAllWatchlist } from "../../Slice/watchlistSlice";
 
 function Watchlist() {
-  const watchlist = useSelector((state) => state.watchlist.watchlist);
+  const watchlist = useSelector((state) => state.watchlist?.watchlist);
   const dispatch = useDispatch();
   const [viewMode, setViewMode] = useState("compact");
   const [sortType, setSortType] = useState("alphabet");
@@ -29,30 +29,32 @@ function Watchlist() {
   function getSortedWatchlist() {
     switch (sortType) {
       case "alphabet":
-        return watchlist.slice().sort((a, b) => a.Title.localeCompare(b.Title));
+        return watchlist
+          ?.slice()
+          .sort((a, b) => a.Title.localeCompare(b.Title));
       case "imdbrating":
-        return watchlist.slice().sort((a, b) => b.imdbRating - a.imdbRating);
+        return watchlist?.slice().sort((a, b) => b.imdbRating - a.imdbRating);
       case "yourrating":
-        return watchlist.slice().sort((a, b) => b.rating - a.rating);
+        return watchlist?.slice().sort((a, b) => b.rating - a.rating);
       case "runtime":
-        return watchlist.slice().sort((a, b) => {
+        return watchlist?.slice().sort((a, b) => {
           const aRuntime = parseInt(a.Runtime) || 0;
           const bRuntime = parseInt(b.Runtime) || 0;
           return bRuntime - aRuntime;
         });
       case "releasedate":
         return watchlist
-          .slice()
+          ?.slice()
           .sort((a, b) => new Date(b.Released) - new Date(a.Released));
       case "year":
-        return watchlist.slice().sort((a, b) => b.Year - a.Year);
+        return watchlist?.slice().sort((a, b) => b.Year - a.Year);
       default:
         return watchlist;
     }
   }
   const sortedWatchlist = getSortedWatchlist();
 
-  if (watchlist.length == 0) return <Zerowatchlist />;
+  if (watchlist?.length == 0) return <Zerowatchlist />;
 
   return (
     <div className="w-full p-4">
@@ -107,13 +109,13 @@ function Watchlist() {
       </div>
       {viewMode === "compact" ? (
         <ul className="mx-auto flex w-full flex-col space-y-4 border-2 p-2">
-          {sortedWatchlist.map((list, index) => (
+          {sortedWatchlist?.map((list, index) => (
             <Compactview list={list} index={index} key={index} />
           ))}
         </ul>
       ) : (
         <ul className="setSearch grid grid-cols-1 gap-5 p-6 md:grid-cols-3 md:p-4 lg:grid-cols-4 xl:grid-cols-5">
-          {sortedWatchlist.map((list, index) => (
+          {sortedWatchlist?.map((list, index) => (
             <GridView list={list} key={index} />
           ))}
         </ul>

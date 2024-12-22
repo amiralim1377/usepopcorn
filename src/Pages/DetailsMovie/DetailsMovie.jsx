@@ -31,8 +31,8 @@ function DetailsMovie() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { imdbID } = useParams();
-  const watchlist = useSelector((state) => state.watchlist.watchlist);
-  const isAdded = watchlist.some((film) => film.imdbID === imdbID);
+  const watchlist = useSelector((state) => state.watchlist?.watchlist);
+  const isAdded = watchlist?.some((film) => film?.imdbID === imdbID);
 
   const {
     isLoading,

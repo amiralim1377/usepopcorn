@@ -28,8 +28,8 @@ function SearchItem({ films }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const watchlist = useSelector((state) => state.watchlist.watchlist);
-  const isAdded = watchlist.some((film) => film.imdbID === imdbID);
+  const watchlist = useSelector((state) => state.watchlist?.watchlist);
+  const isAdded = watchlist?.some((film) => film?.imdbID === imdbID);
 
   const [rating, setRating] = useState(0);
   const [modalIsOpen, setModalIsOpen] = useState(false);
