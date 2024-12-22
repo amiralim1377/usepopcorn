@@ -6,7 +6,6 @@ function Compactview({ list, index }) {
   // eslint-disable-next-line
   const { Poster, Title, Year, imdbID, Released, imdbRating, rating, Runtime } =
     list;
-  console.log(list);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -58,7 +57,7 @@ function Compactview({ list, index }) {
         className="group absolute bottom-0 right-0 z-10"
       >
         <img
-          src="../../../public/images/bookmark_remove_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg"
+          src="/images/bookmark_remove_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg"
           alt=""
           className="md:h-10 md:w-10"
         />

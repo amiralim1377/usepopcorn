@@ -43,7 +43,7 @@ function Header() {
         <Link to="/">
           <div className="flex items-center justify-between">
             <img
-              src="../../../public/images/popcorn-svgrepo-com (1).svg"
+              src="/images/popcorn-svgrepo-com (1).svg"
               className="h-4 w-4 md:h-8 md:w-8"
               alt="Popcorn Icon"
             />
@@ -79,20 +79,20 @@ function Header() {
         <div className="flex flex-row items-center justify-between space-x-2 p-2 text-white">
           <div className="md:hidden" onClick={handleSearchClick}>
             <img
-              src="../../../public/images/search_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
+              src="/images/search_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
               alt="Search Icon"
             />
           </div>
           <div onClick={() => navigate(-1)}>
             <img
-              src="../../../public/images/undo_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
+              src="/images/undo_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
               alt="Undo Icon"
               className="cursor-pointer md:h-10 md:w-10"
             />
           </div>
           <div onClick={() => navigate("watchlist")}>
             <img
-              src="../../../public/images/list_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
+              src="/images/list_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
               alt="watchlist Icon"
               className="cursor-pointer md:h-10 md:w-10"
             />
@@ -111,7 +111,7 @@ function Header() {
               onChange={(e) => setSearch(e.target.value)}
             />
             <img
-              src="../../../public/images/close_24dp_EA3323_FILL0_wght400_GRAD0_opsz24.svg"
+              src="/images/close_24dp_EA3323_FILL0_wght400_GRAD0_opsz24.svg"
               alt=""
               onClick={handleSearchClick}
             />

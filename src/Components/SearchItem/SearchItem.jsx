@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useNavigation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Rating from "react-rating-stars-component";
 import Swal from "sweetalert2";
 import { useState } from "react";
@@ -21,24 +21,23 @@ const customStyles = {
   },
   overlay: { backgroundColor: "rgba(0, 0, 0, 0.8)" },
 };
-
+// eslint-disable-next-line
 function SearchItem({ films }) {
   // eslint-disable-next-line
   const { Poster, Title, Year, imdbID } = films;
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const navigation = useNavigation();
-  const isSubmitting = navigation.state === "submitting";
-  console.log(isSubmitting);
 
   const watchlist = useSelector((state) => state.watchlist.watchlist);
   const isAdded = watchlist.some((film) => film.imdbID === imdbID);
 
   const [rating, setRating] = useState(0);
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [isSubmittingRating, setIsSubmittingRating] = useState(false);
 
   async function handleSubmitRating() {
     try {
+      setIsSubmittingRating(true);
       const filmDetails = await getfilmsbyid(imdbID);
 
       dispatch(addToWatchList({ ...filmDetails, rating }));
@@ -55,6 +54,8 @@ function SearchItem({ films }) {
         title: "Oops...",
         text: "Failed to add film to watchlist. Please try again.",
       });
+    } finally {
+      setIsSubmittingRating(false);
     }
   }
 
@@ -68,24 +69,24 @@ function SearchItem({ films }) {
 
   return (
     <>
-      <li className="relative mx-2 flex flex-col items-center justify-center rounded-2xl bg-itemdark-0 p-4 shadow-2xl hover:bg-itemdarker-0 hover:shadow-none md:mx-0">
-        {isAdded && (
-          <img
-            src="../../../public/images/bookmark_check_24dp_E2B616_FILL1_wght400_GRAD0_opsz24.svg"
-            alt=""
-            className="absolute left-6 top-7 z-10 h-10 w-10"
-          />
-        )}
-        <div className="flex flex-col items-center justify-center p-4">
+      <li className="mx-2 flex flex-col items-center justify-center rounded-2xl bg-itemdark-0 p-4 shadow-2xl hover:bg-itemdarker-0 hover:shadow-none md:mx-0">
+        <div className="relative flex flex-col items-center justify-center p-4">
           <img
             src={Poster}
             alt={Title}
             className="z-0 h-64 w-44 rounded-md object-cover"
           />
+          {isAdded && (
+            <img
+              src="/images/bookmark_check_24dp_E2B616_FILL1_wght400_GRAD0_opsz24.svg"
+              alt=""
+              className="absolute left-2 top-3 z-10 h-10 w-10"
+            />
+          )}
         </div>
-        <div>
+        <div className="w-full">
           <div className="flex w-full flex-col items-center justify-center space-y-6 py-2">
-            <p className="w-44 truncate text-center font-Roboto font-semibold text-white">
+            <p className="w-full truncate text-center font-Roboto font-semibold text-white">
               {Title}
             </p>
             <p className="font-Roboto font-semibold text-white">{Year}</p>
@@ -115,35 +116,38 @@ function SearchItem({ films }) {
           </div>
         </div>
       </li>
-
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={() => setModalIsOpen(false)}
         style={customStyles}
         contentLabel="Rate Movie Modal"
       >
-        <h2 className="text-center">Rate {Title}</h2>
-        <Rating
-          count={5}
-          size={40}
-          activeColor="#ffd700"
-          onChange={(newRating) => setRating(newRating)}
-        />
-        <div className="flex flex-row items-center justify-center space-x-2">
-          <button
-            onClick={handleSubmitRating}
-            className="mt-4 rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
-            disabled={isSubmitting}
-          >
-            Submit
-          </button>
-          <button
-            onClick={() => setModalIsOpen(false)}
-            className="mt-4 rounded-md bg-red-500 px-4 py-2 text-white hover:bg-red-600"
-            disabled={isSubmitting}
-          >
-            Cancel
-          </button>
+        <div className="flex flex-col items-center justify-center text-center">
+          <h2 className="text-2xl font-semibold">Rate {Title}</h2>
+          <div className="mt-4 flex items-center justify-center">
+            <Rating
+              count={5}
+              size={40}
+              activeColor="#ffd700"
+              onChange={(newRating) => setRating(newRating)}
+            />
+          </div>
+          <div className="mt-4 flex flex-row items-center justify-center space-x-2">
+            <button
+              onClick={handleSubmitRating}
+              className="rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
+              disabled={isSubmittingRating}
+            >
+              {isSubmittingRating ? "Submitting..." : "Submit"}
+            </button>
+            <button
+              onClick={() => setModalIsOpen(false)}
+              className="rounded-md bg-red-500 px-4 py-2 text-white hover:bg-red-600"
+              disabled={isSubmittingRating}
+            >
+              {isSubmittingRating ? "Submitting..." : "Cancel"}
+            </button>
+          </div>
         </div>
       </Modal>
     </>

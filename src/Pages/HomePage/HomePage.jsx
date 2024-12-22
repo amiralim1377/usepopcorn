@@ -37,7 +37,7 @@ function HomePage() {
       <div className="m-3 flex w-full max-w-3xl flex-col items-center justify-between space-y-36 p-4">
         <div className="flex items-center justify-center p-2">
           <img
-            src="../../../public/images/popcorn-svgrepo-com (1).svg"
+            src="/images/popcorn-svgrepo-com (1).svg"
             className="h-10 w-10"
             alt=""
           />

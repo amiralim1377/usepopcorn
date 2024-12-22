@@ -16,8 +16,12 @@ const watchlistSlice = createSlice({
         (item) => item.imdbID !== action.payload,
       );
     },
+    deleteAllWatchlist(state) {
+      state.watchlist = [];
+    },
   },
 });
 
-export const { addToWatchList, removeFromWatchList } = watchlistSlice.actions;
+export const { addToWatchList, removeFromWatchList, deleteAllWatchlist } =
+  watchlistSlice.actions;
 export default watchlistSlice.reducer;

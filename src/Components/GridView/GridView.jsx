@@ -4,8 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 // eslint-disable-next-line
 function GridView({ list }) {
   // eslint-disable-next-line
-
-  // eslint-disable-next-line
   const { Poster, Title, Year, imdbID } = list;
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -25,7 +23,7 @@ function GridView({ list }) {
     <li className="relative mx-2 flex flex-col items-center justify-center rounded-2xl bg-itemdark-0 shadow-2xl hover:bg-itemdarker-0 hover:shadow-none md:mx-0">
       {isAdded && (
         <img
-          src="../../../public/images/bookmark_check_24dp_E2B616_FILL1_wght400_GRAD0_opsz24.svg"
+          src="/images/bookmark_check_24dp_E2B616_FILL1_wght400_GRAD0_opsz24.svg"
           alt=""
           className="absolute left-0 top-0 z-10 h-10 w-10"
         />
@@ -49,7 +47,7 @@ function GridView({ list }) {
             className="mb-3 rounded-md bg-yellow-0 p-1 text-xs text-[#5799ef] hover:opacity-90 md:text-base"
           >
             <img
-              src="../../../public/images/bookmark_remove_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg"
+              src="/images/bookmark_remove_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg"
               alt=""
             />
           </button>
@@ -58,7 +56,7 @@ function GridView({ list }) {
             className="mb-3 rounded-md bg-yellow-0 p-1 text-xs text-[#5799ef] hover:opacity-90 md:text-base"
           >
             <img
-              src="../../../public/images/info_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg"
+              src="/images/info_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg"
               alt=""
             />
           </button>

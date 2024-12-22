@@ -1,4 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
+// eslint-disable-next-line
 import { getfilmsbyid } from "../../Services/getfilmsbyid";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../../Components/Loading/Loading";
@@ -22,7 +23,7 @@ const customStyles = {
     transform: "translate(-50%, -50%)",
   },
   overlay: {
-    backgroundColor: "rgba(0, 0, 0, 0.75)",
+    backgroundColor: "rgba(0, 0, 0, 0.8)",
   },
 };
 
@@ -69,7 +70,11 @@ function DetailsMovie() {
   return (
     <div className="container mx-auto flex flex-col space-y-4 bg-yellow-0 p-4 md:flex-row md:space-x-4 md:space-y-0">
       <div className="flex flex-shrink-0 flex-col justify-between space-y-2">
-        <img src={filmsdata?.Poster} alt="" className="w-full rounded-lg" />
+        <img
+          src={filmsdata?.Poster}
+          alt=""
+          className="shadow-y-2xl w-full rounded-lg"
+        />
 
         <div className="hidden flex-col space-y-3 md:flex">
           <button
@@ -107,7 +112,7 @@ function DetailsMovie() {
         </h2>
         {isAdded && (
           <img
-            src="../../../public/images/bookmark_check_24dp_E2B616_FILL1_wght400_GRAD0_opsz24.svg"
+            src="/images/bookmark_check_24dp_E2B616_FILL1_wght400_GRAD0_opsz24.svg"
             alt=""
             className="absolute right-0 top-0 z-10 hidden h-10 w-10 md:block"
           />
