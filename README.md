@@ -35,8 +35,6 @@ The following technologies and libraries have been used in the development of Us
 
 - **Version**: 11.15.2
 
-### UUID
-
 ## Development Tools
 
 ### Vite
