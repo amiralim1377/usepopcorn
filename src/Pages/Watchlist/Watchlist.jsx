@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-
 import Compactview from "../../Components/Compactview/Compactview";
 import GridView from "../../Components/GridView/GridView";
 import Zerowatchlist from "../../Components/Zerowatchlist/Zerowatchlist";
